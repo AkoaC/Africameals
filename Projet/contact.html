@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Africameals</title>
+    
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+
+      <link rel="stylesheet"  href="./css/contact.css" />
+      <link rel="stylesheet"  href="./js/javaS.js" />
+     
+
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <!-- nav  -->
+    <nav class="navbar">
+      <div class="nav-center">
+        <div class="nav-header">
+          <a href="index.html" class="nav-logo">
+            <img src="./images/logo.png" alt="Africameals" />
+          </a>
+          <button class="nav-btn btn">
+            <i class="fas fa-align-justify"></i>
+          </button>
+        </div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link"> Accueil </a>
+          <a href="propos.html" class="nav-link"> A propos de nous </a>
+          <a href="repas.html" class="nav-link"> Repas </a>
+
+          <div class="nav-link contact-link">
+            <a href="contact.html" class="btn"> contact </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end of nav -->
+    <!-- main -->
+    <main class="page">
+      <!-- header -->
+      <header class="hero">
+        <div class="hero-container">
+          <div class="hero-text">
+            <h1>Africameals</h1>
+          <marquee> 
+           <h4>Laissez nous un commentaire ou contactez nous </h4>
+          </marquee>
+          </div>
+        </div>
+      </header>
+      <section class= "main" >
+        <div class="content">
+            <div class="container">
+                <div style="text-align:center">
+                  <h2>Contactez-nous</h2>
+            
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <img src="images/mu (1).jpeg" style="width:100%">
+                  </div>
+                  <div class="column">
+                    <form  name="newCommand" action="#" class="box" id="new-command" onsubmit="return false">
+
+                      
+                      <input type="text" id="nom" name="nom" placeholder="Votre nom" maxlength="30"  required>
+                    
+                      <input type="text" id="prenom" name="prenom" placeholder="Votre prenom"  maxlength="30" required>
+                    
+                      <input type="email" id="email" name="email" placeholder="Votre adresse mail"  maxlength="60" required>
+                     
+                     
+                      <textarea id="message" name="message" placeholder="Laissez un message.." style="height:170px" required></textarea>
+                     
+                      <button type="submit"  onclick="ajouter()">Envoyer</button>
+                      <button type="button"   onclick="supprimer()">Supprimer</button>
+                      <button type="reset"   onclick="annuler()">Annuler</button>
+                     
+                    </form>
+                  </div>
+                </div>
+              </div>
+        
+        </div>
+    </section>
+
+  
+    <main>
+      <div class="box">
+         
+          <table class="datatable">
+          <thead>
+              <tr>
+                 <th>Nom</th>
+                 <th>Prenom</th>
+                 <th>Email</th>
+                 <th>Message</th>            
+              </tr>
+          </thead>
+            <tbody>           
+            </tbody>
+          </table>
+       </div>
+
+    </main>
+  
+    <!-- end of main -->
+    <!-- footer -->
+    <footer >
+      <p>
+        
+        <span >Delices de l'Afrique </span>  avec 
+        <a href="index.html">Africameals</a>
+      </p>
+      <p> Contacts: 07 89 56 41 23 | 2021, AfricaMeals.
+        <br /> mealsafriq@gmail.com
+       <br> <a href="propos.html">A propos de nous </a>
+      </p>
+        <div id="copyright">
+           
+         
+
+
+            <div id="icons">
+              <a href="https://www.instagram.com" ><i class="fa fa-instagram"></i> </a>
+              <a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a>
+              <a href="https://www.facebook.com"><i class="fa fa-facebook"></i> </a>
+            </div>
+          </div>
+    </footer>
+    <script>
+
+
+         var newCommandForm = document.forms.newCommand; 
+
+
+function ajouter(){
+    //alert(newCommandForm.elements.prenom.value)
+    
+    console.log(newCommandForm.elements.nom.value)
+    console.log(newCommandForm.elements.prenom.value)
+    console.log(newCommandForm.elements.email.value)
+    console.log(newCommandForm.elements.message.value)
+
+    // Ex2)3)
+    const newItem = document.createElement('tr')
+    const nomTd = document.createElement('td')
+    const prenomTd = document.createElement('td')
+    const emailTd = document.createElement('td')
+    const messageTd = document.createElement('td')
+    
+    nomTd.textContent = document.newCommand.nom.value
+    prenomTd.textContent = document.newCommand.prenom.value
+    emailTd.textContent = document.newCommand.email.value
+    messageTd.textContent = document.newCommand.message.value
+   
+    
+    
+    if (!document.newCommand.nom.checkValidity() ||
+          !document.newCommand.prenom.checkValidity() ||
+          !document.newCommand.email.checkValidity() ||
+          !document.newCommand.message.checkValidity()
+         ) 
+        {
+               return
+        }
+    
+    
+    //const table = document.querySelector('table')
+    newItem.append(nomTd, prenomTd, emailTd, messageTd)
+
+     /* le premier élément dans le document qui contient la classe "datatable" est retourné*/
+    const table = document.querySelector('.datatable tbody')
+    
+    table.appendChild(newItem)
+
+}
+
+    // supprimer toutes les lignes du tableau
+   
+function supprimer() {
+        const tbody = document.querySelector('.datatable tbody' )
+        while (tbody.firstChild) {
+          tbody.removeChild(tbody.firstChild)
+        }
+    
+}
+ 
+</script>
+</body>
+</html>
